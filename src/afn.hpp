@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -20,5 +21,5 @@ public:
     bool aceita_cadeia(string cadeia);
 
 private:
-    bool aceita_cadeia(string cadeia, int estado_atual);
+    bool aceita_cadeia(string cadeia, int estado_atual, map<pair<int, string>, bool> percorrido);
 };
