@@ -1,0 +1,109 @@
+
+Manual de Uso - Simulador Universal de Autômatos Finitos
+
+Requisitos:
+- Sistema operacional: Windows
+- Linguagem de programação: C++
+- Ferramentas necessárias:
+  - Compilador g++ (parte do GCC)
+  - Editor de texto para visualização e edição dos arquivos de entrada e saída.
+  - Terminal de comando para executar o programa.
+
+Arquivos fornecidos:
+1. afn.hpp: Arquivo de cabeçalho que define a estrutura e
+funções para a simulação dos autômatos finitos.
+2. afn.cpp: Implementação das funções e classes definidas no cabeçalho.
+3. main.cpp: Arquivo principal que contém a lógica do programa.
+4. Makefile: Script para compilar o projeto de forma automática.
+5. in: Arquivo de entrada contendo a descrição do autômato e as cadeias de teste.
+
+Passo a Passo para Compilação e Execução:
+1. Compilar o programa:
+   Abra o terminal na pasta onde os arquivos estão localizados e
+   execute o seguinte comando para compilar o projeto utilizando o Makefile:
+
+   make
+
+   Isso gerará um executável chamado 'afn'.
+
+2. Fornecer um arquivo de entrada:
+   O arquivo de entrada deve seguir o formato especificado no PDF.
+   Um exemplo básico de formato do arquivo de entrada é:
+
+   3
+   2 a b
+   1
+   1 2
+   6
+   0 a 1
+   0 b 1
+   1 a 1
+   1 b 2
+   2 a 0
+   2 b 2
+   10
+   abbbba
+   aabbbb
+   bbabbabbabbb
+   bbbbbbbbbbb
+   -
+   abababababab
+   bbbbaabbbb
+   abba
+   a
+   aaa
+
+3. Executar o programa:
+   Depois de compilar, execute o programa no terminal com o seguinte comando:
+
+   ./afn < in
+
+   O programa lerá o arquivo de entrada, processará as cadeias e fornecerá a saída no terminal.
+
+4. Visualizar a saída:
+   A saída indicará se cada cadeia foi aceita ou rejeitada pela linguagem reconhecida pelo autômato. A saída terá o seguinte formato:
+
+   aceita
+   rejeita
+   aceita
+   aceita
+   rejeita
+   ...
+
+Formato de Arquivos de Entrada e Saída:
+
+Arquivo de Entrada:
+- Primeira linha: número de estados (1 ≤ n ≤ 10).
+- Segunda linha: conjunto de símbolos terminais (máximo de 10).
+- Terceira linha: número de estados iniciais (máximo de 10). Se for AFD, colocar apenas
+o número '1', se for AFN, colocar primeiro a quantidade e em seguida o número (Qx) de cada
+um dos estados.
+- Quarta linha: conjunto de estados de aceitação (F).
+- Quinta linha: número de transições (máximo de 50).
+- Linhas seguintes: transições no formato Qi S Qj, onde Qi e Qj são estados e S é um símbolo terminal
+  ou lambda (representado como "-").
+- Após as transições: número de cadeias de entrada e as próprias cadeias.
+
+Forma dos Arquivos de Entrada:
+1. n (número de estados)
+2. x a0 a1 ... ax-1 (número de símbolos terminais e os simbolos terminais)
+3. 1 (para AFD, Q0 é o único inicial) ou y Q0 Q1... (para AFD, quantidade seguida dos estados)
+4. z Q0 Q1 ... Qz-1 (quantidade de estados de aceitação seguida pelos estados)
+5. t (número de transições)
+6. Qi S Qj (Qi estado origem, S símbolo terminal e Qj estado de chegada, usar '-' para cadeia vazia)
+   Repetir modelo da linha 6 t vezes, uma para cada transição
+7. W (Quantidade de cadeias de entrada)
+8. cadeia0
+   cadeia1
+   ...
+   cadeiaW-1
+
+Arquivo de Saída:
+- Cada linha indica o resultado da verificação de cada cadeia de entrada, com as respostas "aceita"
+  ou "rejeita".
+
+Observações Importantes:
+- Certifique-se de que o arquivo de entrada segue o formato correto,
+caso contrário, o programa poderá não funcionar como esperado.
+- No caso de autômatos não determinísticos, o estado inicial pode conter múltiplos estados.
+
