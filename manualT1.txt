@@ -1,76 +1,33 @@
+## MANUAL DE USO - SIMULADOR DE AUTÔMATOS FINITOS
 
-Manual de Uso - Simulador Universal de Autômatos Finitos
+# EXECUÇÃO EM WINDOWS
 
-Requisitos:
-- Sistema operacional: Windows
-- Linguagem de programação: C++
-- Ferramentas necessárias:
-  - Compilador g++ (parte do GCC)
-  - Editor de texto para visualização e edição dos arquivos de entrada e saída.
-  - Terminal de comando para executar o programa.
+Para execução no sitema operacional Windows utilizando PowerShell, navegue até o diretório desse manual e utilize o comando: "Get-Content in | .\main.exe".
 
-Arquivos fornecidos:
-1. afn.hpp: Arquivo de cabeçalho que define a estrutura e
-funções para a simulação dos autômatos finitos.
-2. afn.cpp: Implementação das funções e classes definidas no cabeçalho.
-3. main.cpp: Arquivo principal que contém a lógica do programa.
-4. Makefile: Script para compilar o projeto de forma automática.
-5. in: Arquivo de entrada contendo a descrição do autômato e as cadeias de teste.
+Para execução no sitema operacional Windows utilizando CMD, navegue até o diretório desse manual e utilize o comando: ".\main.exe < in".
 
-Passo a Passo para Compilação e Execução:
-1. Compilar o programa:
-   Abra o terminal na pasta onde os arquivos estão localizados e
-   execute o seguinte comando para compilar o projeto utilizando o Makefile:
+Para modificar a entrada, modifique o conteúdo do arquivo de texto "in", contido no diretório desse manual, conforme padronização definida na especificação do trabalho.
 
-   make
 
-   Isso gerará um executável chamado 'afn'.
+# COMPILAÇÃO EM WINDOWS
 
-2. Fornecer um arquivo de entrada:
-   O arquivo de entrada deve seguir o formato especificado no PDF.
-   Um exemplo básico de formato do arquivo de entrada é:
+Apesar do executável para Windows já estar incluso nessa entrega, caso deseje compilar o projeto utilizando CMD, certifique-se de que Make e g++ estão instalados no seu sistema, navegue até o diretório desse manual e execute "make".
 
-   3
-   2 a b
-   1
-   1 2
-   6
-   0 a 1
-   0 b 1
-   1 a 1
-   1 b 2
-   2 a 0
-   2 b 2
-   10
-   abbbba
-   aabbbb
-   bbabbabbabbb
-   bbbbbbbbbbb
-   -
-   abababababab
-   bbbbaabbbb
-   abba
-   a
-   aaa
 
-3. Executar o programa:
-   Depois de compilar, execute o programa no terminal com o seguinte comando:
+# COMPILAÇÃO E EXECUÇÃO EM LINUX
 
-   ./afn < in
+Certifique-se de que Make, g++ e as bibliotecas padrões de C++ estáticas (libstdc++-static e glibc-static) estão instaladas no seu sistema (caso queira linkar dinamicamente, sem necessidade das bibliotecas estáticas, remova "-static" das flags no Makefile). Execute no diretório desse manual "make" para compilar e "make run" para executar. Caso deseje modificar a entrada, modifique o arquivo de texto "in", nesse mesmo diretório, seguindo a padronização definida na especificação do trabalho.
 
-   O programa lerá o arquivo de entrada, processará as cadeias e fornecerá a saída no terminal.
 
-4. Visualizar a saída:
-   A saída indicará se cada cadeia foi aceita ou rejeitada pela linguagem reconhecida pelo autômato. A saída terá o seguinte formato:
+# ARQUIVOS FORNECIDOS
 
-   aceita
-   rejeita
-   aceita
-   aceita
-   rejeita
-   ...
+1. in: Arquivo de entrada contendo a descrição do autômato e as cadeias de teste.
+2. main.exe: Arquivo executável para Windows.
+3. Makefile: script para compilação do projeto.
+4. main.cpp, afn.hpp e afn.cpp: Arquifos de código fonte.
 
-Formato de Arquivos de Entrada e Saída:
+
+# PADRONIZAÇÃO DOS ARQUIVOS DE ENTRADA E SAÍDA
 
 Arquivo de Entrada:
 - Primeira linha: número de estados (1 ≤ n ≤ 10).
@@ -103,7 +60,6 @@ Arquivo de Saída:
   ou "rejeita".
 
 Observações Importantes:
-- Certifique-se de que o arquivo de entrada segue o formato correto,
-caso contrário, o programa poderá não funcionar como esperado.
+- Certifique-se de que o arquivo de entrada segue o formato correto, caso contrário, o programa poderá não funcionar como esperado.
 - No caso de autômatos não determinísticos, o estado inicial pode conter múltiplos estados.
 
